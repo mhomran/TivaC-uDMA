@@ -1,0 +1,127 @@
+#ifndef UDMA_CFG_H
+#define UDMA_CFG_H
+
+//includes
+#include <inttypes.h>
+
+//typedefs
+typedef enum {
+  UDMA_CHANNEL_0,
+  UDMA_CHANNEL_1,
+  UDMA_CHANNEL_2,
+  UDMA_CHANNEL_3,
+  UDMA_CHANNEL_4,
+  UDMA_CHANNEL_5,
+  UDMA_CHANNEL_6,
+  UDMA_CHANNEL_7,
+  UDMA_CHANNEL_8,
+  UDMA_CHANNEL_9,
+  UDMA_CHANNEL_10,
+  UDMA_CHANNEL_11,
+  UDMA_CHANNEL_12,
+  UDMA_CHANNEL_13,
+  UDMA_CHANNEL_14,
+  UDMA_CHANNEL_15,
+  UDMA_CHANNEL_16,
+  UDMA_CHANNEL_17,
+  UDMA_CHANNEL_18,
+  UDMA_CHANNEL_19,
+  UDMA_CHANNEL_20,
+  UDMA_CHANNEL_21,
+  UDMA_CHANNEL_22,
+  UDMA_CHANNEL_23,
+  UDMA_CHANNEL_24,
+  UDMA_CHANNEL_25,
+  UDMA_CHANNEL_26,
+  UDMA_CHANNEL_27,
+  UDMA_CHANNEL_28,
+  UDMA_CHANNEL_29,
+  UDMA_CHANNEL_30,
+  UDMA_CHANNEL_31,
+  UDMA_CHANNEL_MAX
+} UdmaChannel_t;
+
+typedef enum {
+  UDMA_ENCODING_0,
+  UDMA_ENCODING_1,
+  UDMA_ENCODING_2,
+  UDMA_ENCODING_3,
+  UDMA_ENCODING_4,
+  UDMA_ENCODING_5,
+  UDMA_ENCODING_6,
+  UDMA_ENCODING_7,
+  UDMA_ENCODING_MAX
+} UdmaEncoding_t;
+
+typedef enum {
+  UDMA_PRIORITY_DEFAULT,
+  UDMA_PRIORITY_HIGH,
+  UDMA_PRIORITY_MAX
+} UdmaPriority_t;
+
+typedef enum {
+  UDMA_MODE_STOP,
+  UDMA_MODE_BASIC,
+  UDMA_MODE_AUTO,
+  UDMA_MODE_PING_PONG,
+  UDMA_MODE_M_SCATTER_GATHER,
+  UDMA_MODE_ALT_M_SCATTER_GATHER,
+  UDMA_MODE_P_SCATTER_GATHER,
+  UDMA_MODE_ALT_P_SCATTER_GATHER,
+  UDMA_MODE_MAX
+} UdmaMode_t;
+
+typedef enum {
+  UDMA_REQ_SINGLE_BURST,
+  UDMA_REQ_BURST_ONLY,
+  UDMA_REQ_MAX
+} UdmaReq_t;
+
+typedef enum {
+  UDMA_ARB_SIZE_1,
+  UDMA_ARB_SIZE_2,
+  UDMA_ARB_SIZE_4,
+  UDMA_ARB_SIZE_8,
+  UDMA_ARB_SIZE_16,
+  UDMA_ARB_SIZE_32,
+  UDMA_ARB_SIZE_64,
+  UDMA_ARB_SIZE_128,
+  UDMA_ARB_SIZE_256,
+  UDMA_ARB_SIZE_512,
+  UDMA_ARB_SIZE_1024,
+  UDMA_ARB_SIZE_MAX
+} UdmaArbSize_t;
+
+typedef enum {
+  UDMA_INC_BYTE,
+  UDMA_INC_HW,
+  UDMA_INC_W,
+  UDMA_INC_NO,
+  UDMA_INC_MAX
+} UdmaInc_t;
+
+typedef enum {
+  UDMA_ITEM_SIZE_BYTE,
+  UDMA_ITEM_SIZE_HW,
+  UDMA_ITEM_SIZE_W,
+  UDMA_ITEM_SIZE_MAX
+} UdmaItemSize_t;
+
+typedef struct {
+  UdmaChannel_t Channel;
+  UdmaEncoding_t Encoding;
+  UdmaPriority_t Priority;
+  UdmaMode_t Mode;
+  UdmaReq_t RequestType;
+  UdmaArbSize_t ArbSize;
+} UdmaConfig_t;
+
+typedef struct {
+  uint8_t UdmaConfigSize;
+  const UdmaConfig_t* UdmaConfig;
+} UdmaInitConfig_t;
+
+//functions prototypes
+const UdmaInitConfig_t* Udma_GetInitConfig(void);
+
+#endif
